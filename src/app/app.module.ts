@@ -10,6 +10,10 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCompareComponent } from './product-list/product-compare/product-compare.component';
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatCardModule, MatTooltipModule, MatGridListModule } from '@angular/material';
+import { ProductCardComponent } from './product-list/product-card/product-card.component';
+import { ProductBoardComponent } from './product-list/product-board/product-board.component';
 
 
 @NgModule({
@@ -20,12 +24,19 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
     ProductListComponent,
     ProductCompareComponent,
     ProductDetailComponent,
-    ErrorpageComponent
+    ErrorpageComponent, 
+    ProductCardComponent, ProductBoardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule, 
+    MatCardModule, 
+    MatTooltipModule, 
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

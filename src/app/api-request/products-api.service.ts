@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Product } from "../model/product";
+import { ProductBySubcategory } from "../model/productBySubcategory";
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class ProductsApiService {
 
   constructor(private http: HttpClient) { }
 
-  baseurl = `http://localhost:8080/market-place-web/products`;
+  private baseurl = `http://localhost:8080/market-place-web/products`;
+  private urlProductBySubcategory = `http://localhost:8080/market-place-web/products/`;
 
-  getProducts() {
-    console.log(`in product api`);
 
-    this.http.get(this.baseurl).subscribe(
-      (products) => {
-        console.log(products);
-      }
-    );
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseurl);
   }
 
-  getProduct() {
-
+  getProductsBySubcatery(subcategory: string): Observable<ProductBySubcategory> {
+    return this.http.get<ProductBySubcategory>(this.urlProductBySubcategory + subcategory);
   }
-
 
 }

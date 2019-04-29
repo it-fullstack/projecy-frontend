@@ -9,12 +9,12 @@ import { ProductDetailComponent } from './product-list/product-detail/product-de
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'productslist', component: ProductListComponent },
+  { path: 'productslist/productBySub/:subcategory', component: ProductListComponent },
   { path: 'productslist/:id', component: ProductDetailComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorpageComponent }
 
-];
+];  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
