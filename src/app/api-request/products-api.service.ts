@@ -16,6 +16,7 @@ export class ProductsApiService {
 
   private baseurl = `http://localhost:8080/market-place-web/products`;
   private urlProductBySubcategory = `http://localhost:8080/market-place-web/products/`;
+  private urlProductByFilter = `http://localhost:8080/market-place-web/filter`;
 
 
   getProducts(): Observable<Product[]> {
@@ -26,4 +27,7 @@ export class ProductsApiService {
     return this.http.get<ProductBySubcategory>(this.urlProductBySubcategory + subcategory);
   }
 
+  getProductByFilter(rawBody): Observable<Product[]> {
+    return this.http.post<Product[]>(this.urlProductByFilter, rawBody);
+  }
 }

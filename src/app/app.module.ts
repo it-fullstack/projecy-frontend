@@ -13,7 +13,10 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatCardModule, MatTooltipModule, MatGridListModule } from '@angular/material';
 import { ProductCardComponent } from './product-list/product-card/product-card.component';
-import { ProductBoardComponent } from './product-list/product-board/product-board.component';
+import { ProductFormComponent } from './product-list/product-form/product-form.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -25,7 +28,7 @@ import { ProductBoardComponent } from './product-list/product-board/product-boar
     ProductCompareComponent,
     ProductDetailComponent,
     ErrorpageComponent, 
-    ProductCardComponent, ProductBoardComponent
+    ProductCardComponent, ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,9 @@ import { ProductBoardComponent } from './product-list/product-board/product-boar
     MatCheckboxModule, 
     MatCardModule, 
     MatTooltipModule, 
-    MatGridListModule
+    MatGridListModule, 
+    Ng5SliderModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

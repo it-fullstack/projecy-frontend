@@ -13,17 +13,10 @@ export class ProductCardComponent implements OnInit {
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.processData(this.productsService.getAllProductCard).subscribe(
+    this.productsService.processData(this.productsService.getProductCard).subscribe(
       data => {
         this.cards = this.productsService.productCard;
     }
     )
   }
-
-
-
-
-
-
-
 }

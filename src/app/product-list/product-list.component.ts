@@ -10,17 +10,11 @@ import { ProductsService } from "./products.service";
 
 export class ProductListComponent implements OnInit {
 
-  parameters = [];
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.processData(this.productsService.getParameterList).subscribe(
-      () => {
-        this.parameters =  this.productsService.parameterList;
-        console.log(this.parameters)
-      }
-    );
+    
   }
 
 }

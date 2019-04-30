@@ -23,23 +23,7 @@
   </div>
   <div class="row">
     <div class="col-12 col-sm-4">
-      <form>
-        <div class="form-row">
-          <button type="submit">save</button>
-          <button type="reset">clear</button>
-        </div>
-        <div *ngFor="let parameter of parameters">
-          <div class="form-row">
-            <div class="form-row">{{parameter.name}}({{parameter.unit}})</div>
-            <div class="form-row">
-              <div class="col-sm-3"><input type="text" class="form-control" [value]="parameter.min"></div>
-              <div class="col-sm-6"><input type="range" class="custom-range" min="2000" max="10000" step="1"
-                  id="customRange3"></div>
-              <div class="col-sm-3"><input type="text" class="form-control" [value]="parameter.max"></div>
-            </div>
-          </div>
-        </div>
-      </form>
+      <app-product-form></app-product-form>
     </div>
     <div class="col-12 col-sm-8">
       <nav aria-label="breadcrumb">

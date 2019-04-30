@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <button type="submit" (click)="getProductCardByFilter()">save</button>
+    <button type="reset">clear</button>
+  </div>
+  <div *ngFor="let parameter of parameters">
+    <div class="form-row">
+      <div class="form-row">{{parameter.name}}({{parameter.unit}})</div>
+      <div class="form-row">
+        <div class="col-sm-3">
+          <!-- <input type="text" class="form-control" [value]="parameter.min"> -->
+          <input class="form-control" type="text" step="1" [(ngModel)]="parameter.min" name="{{parameter.name}}Min">
+        </div>
+        <div class="col-sm-6">
+          <!-- <input type="range" class="custom-range" [min]="parameter.min" [max]="parameter.max" step="1"> -->
+          <ng5-slider [(value)]="parameter.min" [(highValue)]="parameter.max"
+            [options]="{floor: parameter.minLimit, ceil: parameter.maxLimit, step: 1}" 
+            name="slider">
+          </ng5-slider>
+        </div>
+        <div class="col-sm-3">
+          <!-- <input type="text" class="form-control" [value]="parameter.max"> -->
+          <input class="form-control" type="text" step="1" [(ngModel)]="parameter.max" name="{{parameter.name}}Max">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

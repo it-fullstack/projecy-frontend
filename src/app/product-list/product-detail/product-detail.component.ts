@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from "../../model/card";
+import { ProductsService } from "../products.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -27,9 +28,10 @@ export class ProductDetailComponent implements OnInit {
     {"name": "airflow", "unit": "CFW", "value": 5}
   ];
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
+
     
   }
 
