@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './products.service';
+import { Product } from "../model/product";
+import { ProductsService } from "./products.service";
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent implements OnInit {
 
-  constructor(private productService: ProductsService) { }
+  parameters = [];
+
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-  }
-
-  getProducts() {
-    this.productService.getProducts();
+    this.productsService.processData(this.productsService.getParameterList).subscribe(
+      () => {
+        this.parameters =  this.productsService.parameterList;
+        console.log(this.parameters)
+      }
+    );
   }
 
 }
