@@ -1,3 +1,45 @@
 <p>
   product-compare works!
 </p>
+<div style="position:relative;left:5vw">
+    <div class="product-compare" style="float:left;display:inline-block;width:8vw;position:relative;bottom:-8vw;">
+      <p>Summary</p>
+      <div class="product-summary">
+        <div>manufacturer</div>
+        <div>series</div>
+        <div>model</div>
+        <div>usetype</div>
+        <div>application</div>
+        <div>mountainLocation</div>
+        <div>year</div>
+        <div>airflow</div>
+        <div>max_power</div>
+        <div>max_speed</div>
+        <div>fan_diameter</div>
+        <div>brand</div>
+      </div>
+    </div>
+  <div *ngFor="let Comparedp of Comparedps">
+    <div class="product-compare" style="float:left;display:inline-block;width:20vw">
+      <div class="verified-time">
+        <p>Verified Time: {{ Comparedp.verifiedDate }}</p>
+      </div>
+      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" width="160px" height="90px" >
+      <p></p><br>
+      <div class="product-summary-value">
+        <div>{{Comparedp.manufacturer}}</div>
+        <div>{{Comparedp.series}}</div>
+        <div>{{Comparedp.model}}</div>
+        <div>{{Comparedp.usetype}}</div>
+        <div>{{Comparedp.application}}</div>
+        <div>{{Comparedp.mountainLocation}}</div>
+        <div>{{Comparedp.year}}</div>
+        <div>{{Comparedp.airflow}}</div>
+        <div>{{Comparedp.max_power}}</div>
+        <div>{{Comparedp.max_speed}}</div>
+        <div>{{Comparedp.fan_diameter}}</div>
+        <div>{{Comparedp.brand}}</div>
+      </div>
+    </div>
+  </div>
+</div>
