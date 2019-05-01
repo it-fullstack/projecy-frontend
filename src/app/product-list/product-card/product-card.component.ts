@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "../products.service";
-import { Card } from "../../model/card";
+
 
 @Component({
   selector: 'app-product-card',
@@ -8,15 +8,18 @@ import { Card } from "../../model/card";
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  cards: Card[];
+  cards: any;
+  _subscription: any;
+  subcategory = "HAVC_Fans";
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) {
+    this.cards = this.productsService.productCard;
+    this.productsService.observeProduct().subscribe(value => {
+      this.cards = value;
+    })
+  }
 
   ngOnInit() {
-    this.productsService.processData(this.productsService.getProductCard).subscribe(
-      data => {
-        this.cards = this.productsService.productCard;
-    }
-    )
+    this.productsService.processData(this.productsService.getProductCard, this.subcategory).subscribe(() => this.cards = this.productsService.productCard);
   }
 }

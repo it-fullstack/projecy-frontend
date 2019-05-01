@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from "../../model/card";
 import { ProductsService } from "../products.service";
+import { Product } from "../../model/product";
+import { ProductDetail } from "../../model/productDetail";
+import { ActivatedRoute } from '@angular/router';
+import * as $ from "jquery";
+
 
 @Component({
   selector: 'app-product-detail',
@@ -9,30 +13,20 @@ import { ProductsService } from "../products.service";
 })
 export class ProductDetailComponent implements OnInit {
 
+  product: Product[];
 
-  productId = 1;
-  manufacturer = "Big Ass";
-  series = "Haiku H Series";
-  model = "S3150-S0-BC-04-01-C-01";
-
-  useType = "Commercial";
-  application = "Indoor";
-  mountingLocation = "Roof";
-  modelYear = 2016;
-
-
-  cardParameter = [
-    {"name": "airflow", "unit": "CFW", "value": 5},
-    {"name": "airflow", "unit": "CFW", "value": 5},
-    {"name": "airflow", "unit": "CFW", "value": 5},
-    {"name": "airflow", "unit": "CFW", "value": 5}
-  ];
-
-  constructor(private productsService: ProductsService) { }
+  productId: number;
+  private sub: any;
+  productDetail: ProductDetail = <ProductDetail>{};
+  constructor(private productsService: ProductsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    
+    this.sub = this.route.params.subscribe(params => {
+      this.productId = +params['id'];
+      this.productsService.digDetails(this.productsService.getProductDetail, this.productId).subscribe(
+        () => {this.productDetail = this.productsService.productDetail; console.log(this.productDetail);}
+      )
+   });
   }
 
 }

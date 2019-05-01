@@ -1,37 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="big-head">
+    <app-search-bar></app-search-bar>
 
-<!-- <button (click)="test()"> Get Products</button> -->
-
+</nav>
 <div class="container">
-  <div class="row">
-    <div class="container">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Dropdown</button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
-        <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <div class="row">
     <div class="col-12 col-sm-4">
       <app-product-form></app-product-form>
     </div>
     <div class="col-12 col-sm-8">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Library</li>
-        </ol>
-      </nav>
+      <app-nav-bar></app-nav-bar>
       <app-product-card></app-product-card>
     </div>
   </div>
+</div>

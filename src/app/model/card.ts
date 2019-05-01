@@ -5,5 +5,6 @@ export interface Card {
     model: string,
     imgUrl: string,
     year: number,
-    parameters: {}[]
+    parameters: {}[], 
+    productId: number
 }

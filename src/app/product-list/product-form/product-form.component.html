@@ -1,28 +1,52 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="form-row">
-    <button type="submit" (click)="getProductCardByFilter()">save</button>
-    <button type="reset">clear</button>
-  </div>
-  <div *ngFor="let parameter of parameters">
-    <div class="form-row">
-      <div class="form-row">{{parameter.name}}({{parameter.unit}})</div>
-      <div class="form-row">
-        <div class="col-sm-3">
-          <!-- <input type="text" class="form-control" [value]="parameter.min"> -->
-          <input class="form-control" type="text" step="1" [(ngModel)]="parameter.min" name="{{parameter.name}}Min">
-        </div>
-        <div class="col-sm-6">
-          <!-- <input type="range" class="custom-range" [min]="parameter.min" [max]="parameter.max" step="1"> -->
-          <ng5-slider [(value)]="parameter.min" [(highValue)]="parameter.max"
-            [options]="{floor: parameter.minLimit, ceil: parameter.maxLimit, step: 1}" 
-            name="slider">
-          </ng5-slider>
-        </div>
-        <div class="col-sm-3">
-          <!-- <input type="text" class="form-control" [value]="parameter.max"> -->
-          <input class="form-control" type="text" step="1" [(ngModel)]="parameter.max" name="{{parameter.name}}Max">
-        </div>
+<form>
+  <mat-card>
+    <div class="form-inline">
+      <div class="form-group my-sm-2">
+        <label>Search: </label>
+      </div>
+      <div class="form-group mx-sm-3 my-sm-2">
+        <button mat-stroked-button type="submit" (click)="getProductCardByFilter()">Save</button>
+      </div>
+      <div class="form-group mx-sm-3 my-sm-2">
+        <button mat-stroked-button color="warn" type="reset">Clear</button>
       </div>
     </div>
-  </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-accordion>
+    <mat-expansion-panel expanded (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          TECHNICAL SPECIFICATIONS
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let parameter of parameters">
+        <div class="form-row">
+          <mat-toolbar class="form-row">
+              {{parameter.name | titlecase}}<span
+              *ngIf="parameter.name!='year'">({{parameter.unit}})</span>
+          </mat-toolbar>
+          <!-- <div class="form-row">{{parameter.name | titlecase}}<span
+              *ngIf="parameter.name!='year'">({{parameter.unit}})</span></div> -->
+          <div class="form-row">
+            <div class="col-sm-3">
+              <input class="form-control endpoint" type="text" step="1" [(ngModel)]="parameter.min"
+                name="{{parameter.name}}Min">
+            </div>
+            <div class="col-sm-6">
+              <div class="custom-slider">
+                <ng5-slider [(value)]="parameter.min" [(highValue)]="parameter.max"
+                  [options]="{floor: parameter.minLimit, ceil: parameter.maxLimit, step: 1}" name="slider">
+                </ng5-slider>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control endpoint" type="text" step="1" [(ngModel)]="parameter.max"
+                name="{{parameter.name}}Max">
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </form>
