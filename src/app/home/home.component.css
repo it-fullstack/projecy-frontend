@@ -1,7 +1,18 @@
+select,
+input,
+button {
+  height: 50px;
+}
 
- 
- 
-  
+.container {
+  margin-top: 266px;
+}
 
+input{
+  width: 550px;
+}
 
- 
+.center{
+  display: flex;
+  justify-content: center;
+}

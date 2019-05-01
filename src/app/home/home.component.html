@@ -1,3 +1,37 @@
-<p>
-  home works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Joole</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+
+    </ul>
+    <span class="navbar-text">
+      <button (click)="logout()">Log out</button>
+    </span>
+  </div>
+</nav>
+
+
+
+<div class="container">
+
+  <div class="center">
+    <select class="selectpicker" data-first-option="false" required data-live-search="true" id="category"
+      (change)="getChange($event.target.value)">
+      <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
+    </select>
+
+
+
+    <input type="text" name="SubCategory" list="SubCategory" placeholder="search..." (input)="onInput($event)">
+    <datalist id="SubCategory">
+      <option *ngFor="let subcategory of map.get(cate)">{{subcategory.subCategoryName}}</option>
+    </datalist>
+
+
+    <button type="button" (click)="handleClick($event)">search</button>
+  </div>
+</div>

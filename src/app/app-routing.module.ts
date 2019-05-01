@@ -5,12 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
+import { AuthGuard } from './_auth/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'productslist', component: ProductListComponent },
-  { path: 'productslist/:id', component: ProductDetailComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'productslist', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'productslist/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorpageComponent }
 
