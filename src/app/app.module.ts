@@ -11,9 +11,31 @@ import { ProductCompareComponent } from './product-list/product-compare/product-
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatCardModule, MatTooltipModule, MatGridListModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule,
+  MatTooltipModule,
+  MatGridListModule,
+  MatFormFieldModule, 
+  MatInputModule, 
+  MatSelectModule,
+  MatIconModule, 
+  MatExpansionModule, 
+  MatDividerModule, 
+  MatToolbarModule
+} from '@angular/material';
 import { ProductCardComponent } from './product-list/product-card/product-card.component';
-import { ProductBoardComponent } from './product-list/product-board/product-board.component';
+import { ProductFormComponent } from './product-list/product-form/product-form.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SearchBarComponent } from './product-list/search-bar/search-bar.component';
+import { NavBarComponent } from './product-list/nav-bar/nav-bar.component';
+
+
+
 
 
 @NgModule({
@@ -24,8 +46,10 @@ import { ProductBoardComponent } from './product-list/product-board/product-boar
     ProductListComponent,
     ProductCompareComponent,
     ProductDetailComponent,
-    ErrorpageComponent, 
-    ProductCardComponent, ProductBoardComponent
+    ErrorpageComponent,
+    ProductCardComponent, 
+    ProductFormComponent, 
+    SearchBarComponent, NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -33,10 +57,21 @@ import { ProductBoardComponent } from './product-list/product-board/product-boar
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCheckboxModule, 
-    MatCardModule, 
-    MatTooltipModule, 
-    MatGridListModule
+    MatCheckboxModule,
+    MatCardModule,
+    MatTooltipModule,
+    MatGridListModule,
+    Ng5SliderModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatSelectModule,
+    MatIconModule, 
+    MatExpansionModule, 
+    MatDividerModule, 
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

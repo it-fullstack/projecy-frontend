@@ -1,17 +1,27 @@
 <mat-grid-list cols="4" rowHeight="fit">
-  <mat-grid-tile *ngFor="let card of cards" >
+  <mat-grid-tile *ngFor="let card of cards">
     <mat-card class="product-card">
       <mat-card-content class="verified-time">
         <p>Verified Time: {{ card.verifiedTime | date: shortDate }}</p>
       </mat-card-content>
       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" [alt]="card.manufacturer">
       <mat-card-content class="product-head">
-        <mat-card-title>{{card.manufacturer}}</mat-card-title>
-        <mat-card-title>{{card.series}}</mat-card-title>
-        <mat-card-title [matTooltip]="card.model">{{card.model | slice : 0:15}}</mat-card-title>
-      </mat-card-content>
-      <mat-card-content class="product-parameter" >
-        <mat-card-subtitle *ngFor="let parameter of card.parameters">{{parameter.value + " " + parameter.name}}({{parameter.unit}})</mat-card-subtitle>
+        <a [routerLink]="[ '/productslist/', card.productId ]">
+          <mat-card-title>
+            {{card.manufacturer}}
+          </mat-card-title>
+          <mat-card-title>
+            {{card.series}}
+          </mat-card-title>
+          <mat-card-title [matTooltip]="card.model">
+            {{card.model | slice : 0:15}}
+          </mat-card-title>
+        </a>
+      </mat-card-content> 
+      <mat-card-content class="product-parameter">
+        <mat-card-subtitle *ngFor="let parameter of card.parameters">
+          <div *ngIf="parameter.name!='year'">
+          {{parameter.value + " " + parameter.name}}({{parameter.unit}})</div></mat-card-subtitle>
       </mat-card-content>
       <mat-card-content>
         <mat-checkbox>Compare</mat-checkbox>

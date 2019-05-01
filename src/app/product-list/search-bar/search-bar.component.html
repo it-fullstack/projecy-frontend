@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col">
+    <mat-form-field>
+      <mat-select [placeholder]="subcategory">
+        <mat-option [value]="subcategory" *ngFor="let subcategory of subcategoryList" (click)="changeProductList()">
+          {{subcategory}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <form (submit)="handleSubmit()">
+      <mat-form-field>
+        <input type="text" aria-label="Number" matInput [formControl]="productName" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.productName">
+            {{option.productName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="col">
+    <button class="btn btn-outline-success" (click)="handleSubmit()" id="search-button">Search</button>
+  </div>
+</div>
