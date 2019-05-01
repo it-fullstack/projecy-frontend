@@ -15,6 +15,8 @@ import { Subject, from, Observable } from 'rxjs';
 })
 export class ProductsService {
 
+  choosenSub: string;
+
 
   subcategory = "HAVC_Fans";
 

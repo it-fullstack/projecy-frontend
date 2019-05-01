@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProductsService } from "../products.service";
+import { ProductsService } from '../../_services/products.service';
 
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss'], 
+  styleUrls: ['./product-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ProductFormComponent implements OnInit {
