@@ -1,0 +1,36 @@
+.verified-time {
+    text-align: right; 
+    font-size: 13px;
+    color: skyblue;
+}
+mat-card {
+    width: 25%;
+    min-width: 200px;
+    padding-bottom: 10px;
+}
+.product-parameter {
+    line-height: 2px;
+    background: lightgray;
+    text-align: center;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-top: 16px;
+    height: 59px;
+}
+mat-card-title {
+    font-size: 18px;
+    line-height: 15px;
+    text-align: center;
+    color: darkblue;
+}
+
+mat-card-content {
+    margin-bottom: 10px;
+}
+img {
+    margin-bottom: 10px;
+}
+
+mat-grid-list {
+    height: 850px;
+}

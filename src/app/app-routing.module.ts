@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'productslist', component: ProductListComponent, canActivate: [AuthGuard] },
   { path: 'productslist/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
+  { path: 'productslist/productBySub/:subcategory', component: ProductListComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorpageComponent }
 
