@@ -65,11 +65,7 @@ import { NavBarComponent } from './product-list/nav-bar/nav-bar.component';
     HttpClientModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    FormsModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -87,6 +83,11 @@ import { NavBarComponent } from './product-list/nav-bar/nav-bar.component';
     MatExpansionModule,
     MatDividerModule,
     MatToolbarModule
+
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

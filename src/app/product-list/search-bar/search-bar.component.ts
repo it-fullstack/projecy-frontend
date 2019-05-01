@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { ProductsService } from "../products.service";
+import { ProductsService } from '../../_services/products.service';
 import { Router } from '@angular/router';
 
 export interface ProductList {
@@ -75,7 +75,7 @@ export class SearchBarComponent implements OnInit {
   getProductIdByProductName(productList, productName): number{
     let productId;
     productList.forEach(element => {
-      if (element.productName == productName) 
+      if (element.productName == productName)
         productId =  element.productId;
     });
     return productId;
