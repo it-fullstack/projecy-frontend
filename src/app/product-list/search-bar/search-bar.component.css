@@ -1,14 +1,14 @@
 #search-button {
     margin-top: 8px;
-}
-.btn-outline-success {
     color: darkred;
     border-color: darkred;
 }
-.btn-outline-success:hover {
+
+#search-button:hover {
     background-color: darkred;
     color: white;
 }
 #big-head {
     justify-content: center;
 }
+

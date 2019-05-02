@@ -86,12 +86,9 @@ export class SearchBarComponent implements OnInit {
     });
     return productId;
   }
-  changeProductList(event){
-    console.log(event.currentTarget.value)
-    // this.productList = this.extractProductByCategory(this.allProductList, this.subcategory);
-    // this.subcategoryList = this.extractSubcategory(this.allProductList);
-    // this.subcategory_display = this.subcategoryList[0];
-
+  changeProductList(){
+    this.productList = this.extractProductByCategory(this.allProductList, this.subcategory);
+    this.subcategoryList = this.extractSubcategory(this.allProductList);
+    this.subcategory_display = this.subcategoryList[0];
   }
-
 }
