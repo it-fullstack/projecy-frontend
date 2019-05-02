@@ -9,29 +9,53 @@
 
     </ul>
     <span class="navbar-text">
-      <button (click)="logout()">Log out</button>
+      <button class="btn btn-outline-secondary" (click)="logout()">Log out</button>
     </span>
   </div>
 </nav>
 
-
-
 <div class="container">
 
   <div class="center">
-    <select class="selectpicker" data-first-option="false" required data-live-search="true" id="category"
-      (change)="getChange($event.target.value)">
-      <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
-    </select>
+    <div class="row">
+      <div class="col">
+
+
+        <mat-form-field>
+          <mat-select [placeholder]="cate" [(value)]="cate">
+            <mat-option [value]="category.categoryName" *ngFor="let category of categories">
+              {{category.categoryName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
 
 
 
-    <input type="text" name="SubCategory" list="SubCategory" placeholder="search..." (input)="onInput($event)">
-    <datalist id="SubCategory">
-      <option *ngFor="let subcategory of map.get(cate)">{{subcategory.subCategoryName}}</option>
-    </datalist>
+      <div class="col">
 
 
-    <button type="button" (click)="handleClick($event)">search</button>
+        <form (submit)="onSubmit()">
+
+          <mat-form-field>
+            <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+            <mat-autocomplete #auto="matAutocomplete">
+
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </form>
+
+
+      </div>
+      <div class="col">
+        <button class="btn btn-outline-success" (click)="onSubmit()" id="search-button">Search</button>
+      </div>
+    </div>
   </div>
 </div>

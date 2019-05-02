@@ -23,10 +23,4 @@ export class ProductsApiService {
   }
 
 
-  // .subscribe(
-  //   (products) => {
-  //     console.log(products);
-  //   }
-  // );
-
 }

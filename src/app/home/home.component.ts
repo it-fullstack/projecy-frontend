@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../_services/category.service';
 import { Category } from '../model/category';
 import { ProductsService } from '../_services/products.service';
+import { FormControl } from '@angular/forms';
+import { SubCategory } from '../model/subcategory';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +27,11 @@ export class HomeComponent implements OnInit {
 
 
 
+  myControl = new FormControl();
+
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+
   constructor(private userService: UsersService,
     private router: Router,
     private categoryService: CategoryService,
@@ -31,32 +40,23 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getCategoriesAndSubCategories();
-
-
   }
 
-  // select category
-  getChange(kind: string) {
-    this.cate = kind;
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.map.get(this.cate).filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  // input search value
-  onInput(event): void {
-    this.subCate = event.target.value;
-  }
+  onSubmit() {
 
-  // click the search button
-  handleClick($event: Event) {
-    if (this.subCate == null || this.subCate === ``) {
+    if (this.map.get(this.cate).indexOf(this.myControl.value) < 0) {
       alert(`Please fill the search word correctly!`);
     } else {
       // send data in server
       this.productService.choosenSub = this.subCate;
-      this.router.navigate([`productslist`], { queryParams: { sub: this.subCate } });
-
+      this.router.navigate([`productslist`], { queryParams: { sub: this.myControl.value } });
     }
   }
-
 
   logout() {
     this.userService.logout();
@@ -67,6 +67,8 @@ export class HomeComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe(
       data => {
         this.categories = data;
+        this.cate = this.categories[0].categoryName;
+        console.log(this.categories);
       },
       () => { },
       () => {
@@ -82,8 +84,22 @@ export class HomeComponent implements OnInit {
   getAllSubCategories(categoryName: string) {
     this.categoryService.getAllSubCategories(categoryName).subscribe(
       data => {
-        this.map.set(categoryName, data);
-        console.log(this.map);
+        const list: string[] = [];
+        if (data) {
+          data.forEach(sub => {
+            list.push(sub.subCategoryName);
+          });
+
+        }
+        this.map.set(categoryName, list);
+      },
+      () => { },
+      () => {
+        this.filteredOptions = this.myControl.valueChanges
+          .pipe(
+            startWith(''),
+            map(value => this._filter(value))
+          );
       }
     );
   }
