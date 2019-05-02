@@ -4,7 +4,18 @@
   justify-content: center;
 }
 
-
+/* 
 #search-button {
   margin-top:7px;
+} */
+
+#search-button {
+  margin-top: 8px;
+  color: darkred;
+  border-color: darkred;
+}
+
+#search-button:hover {
+  background-color: darkred;
+  color: white;
 }

@@ -15,9 +15,10 @@
 
 .detail-page-nav {
     background-color: darkred;
-    height: 40px;
+    /* height: 40px; */
     padding-top: 12px;
     padding-left: 16px;
+    padding-bottom: 12px;
 }
 .table .thead-light th{
     background-color: #dee2e6;
@@ -48,3 +49,4 @@ h1 {
     padding-left: 13px;
 
 }
+
