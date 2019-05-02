@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/_services/products.service';
 import * as $ from "jquery";
 import { JSDocTagName } from '@angular/compiler/src/output/output_ast';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-compare',
@@ -13,10 +14,18 @@ export class ProductCompareComponent implements OnInit {
   Comparedps = [];//array of ComparedProduct, will be displayed in the page
   tagname = [];//array of tags' name
   productsMap: {[index:string]: string} = {};//index:tag;value:tagvalue in summary xml
-  constructor(private productsService: ProductsService) { }
-
-  productIdList: number[] = [10000, 10001];//compared productId
+  constructor(private productsService: ProductsService,private activedRoute: ActivatedRoute) { }
+  private sub: any;
+  productIdList: number[] = [];//compared productId
   ngOnInit() {
+    this.productIdList = [];
+    this.sub = this.activedRoute.params.subscribe(params => {
+    console.log(params);
+    for (var val in params) {
+      this.productIdList.push(Number(params[val]));
+     }
+     console.log(this.productIdList);
+    });
     this.productsService.processData(this.productsService.getProductCard, `HAVC_Fans`).subscribe(
       () => {
         this.products = this.productsService.products;//get products[]
@@ -34,7 +43,10 @@ export class ProductCompareComponent implements OnInit {
 
         for (let i = 0; i < this.products.length; i++) {//only display the productsId in productIdList[]
           if (this.productIdList.indexOf(this.products[i].productId) == -1) {
-            break;
+            console.log("not exist " + typeof(this.productIdList[i]));
+            console.log(this.productIdList);
+
+            continue;
           }
           let sum = $($.parseXML(this.products[i].summary));//XML to jquery obj
           //console.log(sum.find(this.tagname[2]).text());
@@ -44,8 +56,7 @@ export class ProductCompareComponent implements OnInit {
             this.productsMap[this.tagname[j]] = sum.find(this.tagname[j]).text();
           }
           //console.log(sum.find("manufacturer").text());
-          console.log(this.productsMap);
-
+          //console.log(this.productsMap);
           this.Comparedps.push(new ComparedProduct(VDate.toString(), this.productsMap));//update Comparedps[]
           this.productsMap = {};//reset
         }

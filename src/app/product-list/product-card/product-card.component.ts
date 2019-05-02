@@ -33,10 +33,12 @@ export class ProductCardComponent implements OnInit {
     })
   }
   handleCompare() {
-    // this.cards.forEach(element => {
-    //   console.log(element.productId);
-    //   console.log(element.checked)
-    // });
-    // this.router.navigate(['productscompare']);
+    let comparedproductsId = [];
+     this.cards.forEach(element => {
+       if(element.checked){
+         comparedproductsId.push(element.productId);
+       }
+     });
+     this.router.navigate(['productscompare',comparedproductsId]);
   }
 }
