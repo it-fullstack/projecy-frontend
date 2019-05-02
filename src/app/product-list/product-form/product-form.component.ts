@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../../_services/products.service';
 
-import { ActivatedRoute } from '@angular/router'
-
+import { ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/_services/alert.service';
+
 
 
 
@@ -19,7 +19,8 @@ export class ProductFormComponent implements OnInit {
   subcategory: string;
   private sub: any;
 
-  constructor(private productsService: ProductsService, private activedRoute: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private activedRoute: ActivatedRoute,
+    private alertService: AlertService) { }
 
   ngOnInit() {
     this.sub = this.activedRoute.params.subscribe(params => {

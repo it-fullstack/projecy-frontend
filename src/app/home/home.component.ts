@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       // send data in server
       this.productService.choosenSub = this.subCate;
       // this.router.navigate([`productslist/productBySub`], { queryParams: { sub: this.subCate } });
-      this.router.navigate(['productslist/productBySub/', this.subCate])
+      this.router.navigate(['productslist/productBySub/', this.myControl.value]);
 
     }
   }
