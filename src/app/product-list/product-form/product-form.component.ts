@@ -48,7 +48,7 @@ export class ProductFormComponent implements OnInit {
 
   convertParameterListToFilterCondition(parameterList) {
     let filterList = {};
-    filterList["sub"] = [this.productsService.subcategory];
+    filterList["sub"] = [this.subcategory];
     for (let ele of parameterList) {
       filterList[ele.name] = [ele.min, ele.max];
     }
