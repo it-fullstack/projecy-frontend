@@ -1,15 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="big-head">
-    <app-search-bar></app-search-bar>
-
-</nav>
+<app-search-bar></app-search-bar>
 <div class="container">
-
   <div class="row">
     <div class="col-12 col-sm-4">
       <app-product-form></app-product-form>
     </div>
     <div class="col-12 col-sm-8">
-      <app-nav-bar></app-nav-bar>
+      <div class="row">
+        <div class="col">
+          <app-nav-bar></app-nav-bar>
+        </div>
+        <div class="col compare-button">
+          <button mat-stroked-button color="primary">Compare</button>
+        </div>
+      </div>
       <app-product-card></app-product-card>
     </div>
   </div>

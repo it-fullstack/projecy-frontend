@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProductsService } from '../../_services/products.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router'
+
 
 export interface ProductList {
   subcategoryName: string,
@@ -20,7 +21,8 @@ export interface ProductList {
 })
 export class SearchBarComponent implements OnInit {
 
-  subcategory = "HAVC_Fans";
+  subcategory: string;
+  private sub: any;
 
   subcategory_display: string;
   productName = new FormControl();
@@ -30,16 +32,20 @@ export class SearchBarComponent implements OnInit {
   filteredOptions: Observable<ProductList[]>;
   productId: number;
 
-  constructor(private productsService: ProductsService, private router: Router) { }
+  constructor(private productsService: ProductsService, private router: Router, private activedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productsService.processAllData(this.productsService.getSearchBarReady).subscribe(
-      () => {
-        this.allProductList = this.productsService.productOptionsForSearchBar;
-        this.productList = this.extractProductByCategory(this.allProductList, this.subcategory);
-        this.subcategoryList = this.extractSubcategory(this.allProductList);
-        this.subcategory_display = this.subcategoryList[0];
-      }
+    this.sub = this.activedRoute.params.subscribe(params => {
+      this.subcategory = params["subcategory"];
+      this.productsService.processAllData(this.productsService.getSearchBarReady).subscribe(
+        () => {
+          this.allProductList = this.productsService.productOptionsForSearchBar;
+          this.productList = this.extractProductByCategory(this.allProductList, this.subcategory);
+          this.subcategoryList = this.extractSubcategory(this.allProductList);
+          this.subcategory_display = this.subcategoryList[0];
+        }
+      )
+    }
     )
     this.filteredOptions = this.productName.valueChanges
       .pipe(
@@ -79,6 +85,13 @@ export class SearchBarComponent implements OnInit {
         productId = element.productId;
     });
     return productId;
+  }
+  changeProductList(event){
+    console.log(event.currentTarget.value)
+    // this.productList = this.extractProductByCategory(this.allProductList, this.subcategory);
+    // this.subcategoryList = this.extractSubcategory(this.allProductList);
+    // this.subcategory_display = this.subcategoryList[0];
+
   }
 
 }

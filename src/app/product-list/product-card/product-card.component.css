@@ -1,10 +1,9 @@
 .verified-time {
     text-align: right; 
     font-size: 13px;
-    color: skyblue;
+    color: gray;
 }
 mat-card {
-    width: 25%;
     min-width: 200px;
     padding-bottom: 10px;
 }
@@ -14,14 +13,14 @@ mat-card {
     text-align: center;
     margin-left: -16px;
     margin-right: -16px;
-    padding-top: 16px;
-    height: 59px;
+    padding-top: 1px;
+    height: 68px;
 }
 mat-card-title {
     font-size: 18px;
     line-height: 15px;
     text-align: center;
-    color: darkblue;
+    color: darkred;
 }
 
 mat-card-content {
@@ -32,5 +31,5 @@ img {
 }
 
 mat-grid-list {
-    height: 850px;
+    height: 389px;
 }

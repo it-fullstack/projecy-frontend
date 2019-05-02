@@ -1,8 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="big-head">
+
 <div class="row">
   <div class="col">
     <mat-form-field>
       <mat-select [placeholder]="subcategory">
-        <mat-option [value]="subcategory" *ngFor="let subcategory of subcategoryList" (click)="changeProductList()">
+        <mat-option [value]="subcategory" *ngFor="let subcategory of subcategoryList" (click)="changeProductList($event)">
           {{subcategory}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -23,3 +25,4 @@
     <button class="btn btn-outline-success" (click)="handleSubmit()" id="search-button">Search</button>
   </div>
 </div>
+</nav>

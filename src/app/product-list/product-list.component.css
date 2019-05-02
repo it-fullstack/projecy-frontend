@@ -1,8 +1,7 @@
-/* #product-board {
-    height: 1000px;
-} */
-
-
-#big-head {
-    justify-content: center;
+.compare-button {
+    text-align: right;
+    padding-top: 5px;
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+    color: darkred;
 }
