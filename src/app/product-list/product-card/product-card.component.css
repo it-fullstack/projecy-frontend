@@ -1,5 +1,5 @@
 .verified-time {
-    text-align: right; 
+    text-align: right;
     font-size: 13px;
     color: gray;
 }
@@ -27,12 +27,14 @@ mat-card-content {
     margin-bottom: 10px;
 }
 img {
+    height: 190px;
     margin-bottom: 10px;
 }
 
 mat-grid-list {
     height: 389px;
 }
+
 
 .compare-button {
     padding-top: 10px;
@@ -41,3 +43,4 @@ mat-grid-list {
 .mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
     background-color: darkred;
 }
+
