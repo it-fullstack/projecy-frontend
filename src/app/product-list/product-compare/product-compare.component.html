@@ -1,29 +1,29 @@
 <p>
   product-compare works!
 </p>
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col"></div>
-    <div class="col" *ngFor="let Comparedp of Comparedps">
-      <p>Verified Time: {{ Comparedp.verifiedDate }}</p>
+    <div class="col" *ngFor="let Comparedp of Comparedps" style="border-style:solid; border-width:1px; border-color:#000">
+      <p style="text-align: right;font-size:45%;color:blue">Verified Time: {{ Comparedp.verifiedDate }}</p>
       <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" width="160px" height="90px">
     </div>
   </div>
   <div class="row">
-    <div class="col">Summary</div>
-    <div class="col" *ngFor="let Comparedp of Comparedps">
+    <div class="col" style="border-style:solid; border-width:1px; border-color:#000">Summary</div>
+    <div class="col" *ngFor="let Comparedp of Comparedps" style="border-style:solid; border-width:1px; border-color:#000">
       <div></div>
     </div>
   </div>
   <div class="row">
-      <div class="col">
+      <div class="col" style="border-style:solid; border-width:1px; border-color:#000;padding: 0;background-color:rgb(197, 197, 197)">
           <div class="product-summary" *ngFor="let tag of tagname">
-              <div>{{tag}}</div>
+              <div style="margin:0;width:100%;border-style:solid; border-width:1px;border-color:rgb(197, 197, 197)">{{tag}}</div>
           </div>
       </div>
-      <div class="col" *ngFor="let Comparedp of Comparedps">
-        <div *ngFor="let tag of tagname">
-          <div>{{Comparedp.productsHash[tag]}}</div>
+      <div class="col" *ngFor="let Comparedp of Comparedps" style="border-style:solid; border-width:1px; border-color:#000;padding: 0">
+        <div *ngFor="let tag of tagname" style="padding: 0">
+          <div style="margin:0;width:100%;border-style:solid; border-width:1px; border-color:whitesmoke;text-align:center;">{{Comparedp.productsHash[tag]}}</div>
         </div>
       </div>
   </div>
