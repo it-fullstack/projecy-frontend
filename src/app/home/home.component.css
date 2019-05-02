@@ -1,18 +1,10 @@
-select,
-input,
-button {
-  height: 50px;
-}
-
-.container {
-  margin-top: 266px;
-}
-
-input{
-  width: 550px;
-}
-
-.center{
+.center {
+  margin-top: 200px;
   display: flex;
   justify-content: center;
+}
+
+
+#search-button {
+  margin-top:7px;
 }
