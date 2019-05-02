@@ -17,16 +17,19 @@ export class ProductCompareComponent implements OnInit {
   constructor(private productsService: ProductsService,private activedRoute: ActivatedRoute) { }
   private sub: any;
   productIdList: number[] = [];//compared productId
+  subcategeory: string;
   ngOnInit() {
     this.productIdList = [];
     this.sub = this.activedRoute.params.subscribe(params => {
-    console.log(params);
-    for (var val in params) {
-      this.productIdList.push(Number(params[val]));
-     }
-     console.log(this.productIdList);
+    //console.log((params.comparedproductsId.split(",")));
+    this.subcategeory = params.subcategeory;
+    let temparray = params.comparedproductsId.split(",");
+    for(let i = 0; i < temparray.length;i++){
+      this.productIdList.push(Number(temparray[i]));
+    }
+    console.log(this.productIdList);
     });
-    this.productsService.processData(this.productsService.getProductCard, `HAVC_Fans`).subscribe(
+    this.productsService.processData(this.productsService.getProductCard, this.subcategeory).subscribe(
       () => {
         this.products = this.productsService.products;//get products[]
         //console.log(this.products);

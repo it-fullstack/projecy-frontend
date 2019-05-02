@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../_services/products.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SubCategory } from 'src/app/model/subcategory';
 
 
 @Component({
@@ -39,6 +40,6 @@ export class ProductCardComponent implements OnInit {
          comparedproductsId.push(element.productId);
        }
      });
-     this.router.navigate(['productscompare',comparedproductsId]);
+     this.router.navigate(['productscompare',{'comparedproductsId':comparedproductsId,'subcategeory':this.subcategory}]);
   }
 }
