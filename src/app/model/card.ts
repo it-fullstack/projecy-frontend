@@ -6,5 +6,6 @@ export interface Card {
     imgUrl: string,
     year: number,
     parameters: {}[], 
-    productId: number
+    productId: number, 
+    checked: boolean
 }
