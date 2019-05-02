@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import * as $ from "jquery";
+import { JSDocTagName } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-product-compare',
@@ -8,26 +10,49 @@ import * as $ from "jquery";
   styleUrls: ['./product-compare.component.css']
 })
 export class ProductCompareComponent implements OnInit {
-
   products = [];
   Comparedps = [];
+  tagname = [];
+  productsHash: {[index:string]: string} = {};
   constructor(private productsService: ProductsService) { }
 
+  productIdList: number[] = [10000,10001,10002];
   ngOnInit() {
     this.productsService.processData(this.productsService.getAllProductCard).subscribe(
       () => {
         this.products =  this.productsService.products;
+        //console.log(this.products);
+        //let parser = new DOMParser();
+        //let xmlDoc = parser.parseFromString(text,"text/xml");
+        // documentElement is root node
+        let xmlDoc = $.parseXML(this.products[0].summary);
+        let x = xmlDoc.documentElement.childNodes;
+        for (let i = 0; i < x.length ;i++) {
+          this.tagname.push(x[i].nodeName);
+          this.productsHash[x[i].nodeName] = "";
+        }
+        console.log(this.tagname);
+
         for(let i = 0; i < this.products.length; i++){
-          let sum = $($.parseXML(this.products[i].summary));
-          //console.log(sum.find("manufacturer").text());
+          if(this.productIdList.indexOf(this.products[i].productId) == -1){
+            break;
+          }
+          let sum = $($.parseXML(this.products[i].summary));  
+          //console.log(sum.find(this.tagname[2]).text()); 
           let VDate = new Date(parseInt(this.products[i].verifiedDate));
           //console.log(VDate.toString());
-          this.Comparedps.push(new ComparedProduct(VDate.toString(),sum.find("manufacturer").text(),sum.find("series").text(),sum.find("model").text(),
-          sum.find("usetype").text(),sum.find("application").text(),sum.find("mountainLocation").text(),sum.find("year").text(),
-          sum.find("airflow").text(),sum.find("max-power").text(),sum.find("max-speed").text(),sum.find("fan-diameter").text(),sum.find("brand").text()));
+          for(let j = 0; j < this.tagname.length; j++){
+            this.productsHash[this.tagname[j]] = sum.find(this.tagname[j]).text();
+          }
+          //console.log(sum.find("manufacturer").text()); 
+          console.log(this.productsHash);
+
+          this.Comparedps.push(new ComparedProduct(VDate.toString(),this.productsHash));
+          this.productsHash = {};
         }
-        console.log(this.Comparedps);
+        //console.log(this.Comparedps[0]);
         //console.log(this.products);
+        //console.log(this.productsHash);
       }
     );
   }
@@ -37,32 +62,9 @@ export class ProductCompareComponent implements OnInit {
 
 export class ComparedProduct{
   verifiedDate: string;
-  manufacturer: string;
-  series: string;
-  model: string;
-  usetype: string;
-  application: string;
-  mountainLocation: string;
-  year: string;
-  airflow: string;
-  max_power: string;
-  max_speed: string;
-  fan_diameter: string;
-  brand: string;
-  constructor(verifiedDate: string,manufacturer: string,series: string,model: string,usetype: string,application: string,mountainLocation: string,year: string, airflow: string,
-    max_power: string, max_speed: string, fan_diameter: string, brand: string) {
+  productsHash: {[index:string]: string} = {};
+  constructor(verifiedDate: string,productsHash: {[index:string]: string} ) {
       this.verifiedDate = verifiedDate;
-      this.manufacturer = manufacturer;
-      this.series = series;
-      this.model = model;
-      this.usetype = usetype;
-      this.application = application;
-      this.mountainLocation = mountainLocation;
-      this.year = year;
-      this.airflow = airflow;
-      this.max_power = max_power;
-      this.max_speed = max_speed;
-      this.fan_diameter = fan_diameter;
-      this.brand = brand;
+      this.productsHash = productsHash;
      }
 }

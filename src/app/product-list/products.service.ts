@@ -5,6 +5,7 @@ import { Card } from "../model/card";
 import * as _ from 'lodash';
 import * as $ from "jquery";
 import { tap } from "rxjs/operators";
+import { Attribute } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
