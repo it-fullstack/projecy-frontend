@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from "../products.service";
-import { Card } from "../../model/card";
+import { ProductsService } from '../../_services/products.service';
+import { ActivatedRoute } from '@angular/router'
+
 
 @Component({
   selector: 'app-product-card',
@@ -8,22 +9,22 @@ import { Card } from "../../model/card";
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  cards: Card[];
+  cards: any;
+  _subscription: any;
+  subcategory: string;
+  private sub: any;
 
-  constructor(private productsService: ProductsService) { }
-
-  ngOnInit() {
-    this.productsService.processData(this.productsService.getAllProductCard).subscribe(
-      data => {
-        this.cards = this.productsService.productCard;
-    }
-    )
+  constructor(private productsService: ProductsService, private activedRoute: ActivatedRoute) {
+    this.cards = this.productsService.productCard;
+    this.productsService.observeProduct().subscribe(value => {
+      this.cards = value;
+    })
   }
 
-
-
-
-
-
-
+  ngOnInit() {
+    this.sub = this.activedRoute.params.subscribe(params => {
+      this.subcategory = params["subcategory"];
+      this.productsService.processData(this.productsService.getProductCard, this.subcategory).subscribe(() => this.cards = this.productsService.productCard);
+    })
+  }
 }

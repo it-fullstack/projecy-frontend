@@ -1,0 +1,10 @@
+.center {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+
+#search-button {
+  margin-top:7px;
+}

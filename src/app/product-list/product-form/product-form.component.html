@@ -1,0 +1,38 @@
+<form>
+  <mat-accordion>
+    <mat-expansion-panel expanded (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          TECHNICAL SPECIFICATIONS
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let parameter of parameters">
+        <div class="form-row">
+          <div class="form-row parameter-title">{{parameter.name | titlecase}}<span
+              *ngIf="parameter.name!='year'">({{parameter.unit}})</span>
+          </div>
+          <div class="form-row">
+            <div class="col-sm-3">
+              <input class="form-control endpoint" type="text" step="1" [(ngModel)]="parameter.min"
+                name="{{parameter.name}}Min">
+            </div>
+            <div class="col-sm-6">
+              <div class="custom-slider">
+                <ng5-slider [(value)]="parameter.min" [(highValue)]="parameter.max"
+                  [options]="{floor: parameter.minLimit, ceil: parameter.maxLimit, step: 1}" name="slider">
+                </ng5-slider>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <input class="form-control endpoint" type="text" step="1" [(ngModel)]="parameter.max"
+                name="{{parameter.name}}Max">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-box">
+      <button mat-raised-button type="submit" (click)="getProductCardByFilter()" id="submit-button">Save</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

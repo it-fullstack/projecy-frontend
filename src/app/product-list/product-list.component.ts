@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from "../model/product";
-import { ProductsService } from "./products.service";
+import { ProductsService } from '../_services/products.service';
+import { Product } from '../model/product';
+
 
 @Component({
   selector: 'app-product-list',
@@ -10,17 +11,10 @@ import { ProductsService } from "./products.service";
 
 export class ProductListComponent implements OnInit {
 
-  parameters = [];
-
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.processData(this.productsService.getParameterList).subscribe(
-      () => {
-        this.parameters =  this.productsService.parameterList;
-        console.log(this.parameters)
-      }
-    );
+
   }
 
 }

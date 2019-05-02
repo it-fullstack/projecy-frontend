@@ -1,0 +1,76 @@
+.custom-slider .ng5-slider .ng5-slider-bar {
+    background: lightgray;
+    height: 2px;
+}
+.custom-slider .ng5-slider .ng5-slider-selection {
+    background: gray;
+}
+
+.custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 8px;
+    height: 12px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: darkred;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+}
+.custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+}
+
+.custom-slider .ng5-slider .ng5-slider-bubble  {
+    font-size: 0;
+}
+
+
+.endpoint {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+}
+
+mat-divider {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.mat-toolbar-single-row{
+    height: 20px;
+}
+.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+    font: 500 16px/24px Roboto,"Helvetica Neue",sans-serif;
+}
+.mat-toolbar {
+    background: transparent;
+}
+
+.parameter-title {
+    height: 14px;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-style: italic;
+    font-weight: bold;
+    color: darkred;
+}
+
+.mat-expansion-panel-header {
+    font-size: 16px;
+    height: 60px;
+    font-weight: bold;
+    background-color: lightgray;
+}
+#submit-button {
+    min-width: 100px;
+}
+.submit-box {
+    text-align: center;
+}
