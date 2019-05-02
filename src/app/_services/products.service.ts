@@ -91,14 +91,15 @@ export class ProductsService {
         })
       }
       this.productCard.push({
-        "verifiedTime": this.products[i].verifiedDate,
-        "manufacturer": summary.find("manufacturer").text(),
-        "model": summary.find("model").text(),
-        "series": summary.find("series").text(),
-        "imgUrl": summary.find("imgUrl").text(),
-        "year": parseInt(summary.find("year").text()),
-        "parameters": cardParameter,
-        "productId": this.products[i].productId
+        verifiedTime: this.products[i].verifiedDate,
+        manufacturer: summary.find("manufacturer").text(),
+        model: summary.find("model").text(),
+        series: summary.find("series").text(),
+        imgUrl: summary.find("imgUrl").text(),
+        year: parseInt(summary.find("year").text()),
+        parameters: cardParameter,
+        productId: this.products[i].productId, 
+        checked: false
       })
     }
   }
@@ -125,14 +126,15 @@ export class ProductsService {
         })
       }
       this.productCard.push({
-        "verifiedTime": this.products[i].verifiedDate,
-        "manufacturer": summary.find("manufacturer").text(),
-        "model": summary.find("model").text(),
-        "series": summary.find("series").text(),
-        "imgUrl": summary.find("imgUrl").text(),
-        "year": parseInt(summary.find("year").text()),
-        "parameters": cardParameter,
-        "productId": this.products[i].productId
+        verifiedTime: this.products[i].verifiedDate,
+        manufacturer: summary.find("manufacturer").text(),
+        model: summary.find("model").text(),
+        series: summary.find("series").text(),
+        imgUrl: summary.find("imgUrl").text(),
+        year: parseInt(summary.find("year").text()),
+        parameters: cardParameter,
+        productId: this.products[i].productId, 
+        checked: false
       })
     }
     this.productCardSub.next(this.productCard);
