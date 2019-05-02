@@ -5,7 +5,14 @@
         <mat-card-content class="verified-time">
           <p>Verified Time: {{ card.verifiedTime | date: shortDate }}</p>
         </mat-card-content>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" [alt]="card.manufacturer">
+
+        <img mat-card-image *ngIf="subcategory == 'HAVC_Fans'; else notShow"
+        src="assets/img/fan.jpeg" [alt]="card.manufacturer">
+
+        <ng-template #notShow>
+            <img mat-card-image src="assets/img/boiler.jpeg" [alt]="card.manufacturer">
+        </ng-template>
+
         <mat-card-content class="product-head">
           <a [routerLink]="[ '/productslist/', card.productId ]">
             <mat-card-title>

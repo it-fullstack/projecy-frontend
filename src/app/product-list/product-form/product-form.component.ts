@@ -36,7 +36,9 @@ export class ProductFormComponent implements OnInit {
     this.productsService.filterData(
       this.productsService.getProductCardByFilter,
       this.convertParameterListToFilterCondition(parameterList)).subscribe(
-        () => {},
+        () => {
+          this.alertService.success('');
+        },
         (error) => {
           this.alertService.error(error);
           // clean product list

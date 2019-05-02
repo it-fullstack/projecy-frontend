@@ -24,7 +24,11 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
     this.sub = this.activedRoute.params.subscribe(params => {
       this.subcategory = params["subcategory"];
-      this.productsService.processData(this.productsService.getProductCard, this.subcategory).subscribe(() => this.cards = this.productsService.productCard);
+      this.productsService.processData(this.productsService.getProductCard, this.subcategory)
+        .subscribe(() => {
+          this.cards = this.productsService.productCard;
+
+        });
     })
   }
 }
