@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../_services/products.service';
 import { Product } from '../model/product';
@@ -11,16 +9,12 @@ import { Product } from '../model/product';
   styleUrls: ['./product-list.component.css']
 })
 
-
 export class ProductListComponent implements OnInit {
 
-
   constructor(private productsService: ProductsService) { }
-
 
   ngOnInit() {
 
   }
-
 
 }

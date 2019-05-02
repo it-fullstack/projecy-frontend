@@ -52,7 +52,8 @@ export class HomeComponent implements OnInit {
     } else {
       // send data in server
       this.productService.choosenSub = this.subCate;
-      this.router.navigate([`productslist`], { queryParams: { sub: this.subCate } });
+      // this.router.navigate([`productslist/productBySub`], { queryParams: { sub: this.subCate } });
+      this.router.navigate(['productslist/productBySub/', this.subCate])
 
     }
   }

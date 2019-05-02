@@ -39,6 +39,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SearchBarComponent } from './product-list/search-bar/search-bar.component';
 import { NavBarComponent } from './product-list/nav-bar/nav-bar.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 
@@ -82,8 +83,8 @@ import { NavBarComponent } from './product-list/nav-bar/nav-bar.component';
     MatIconModule,
     MatExpansionModule,
     MatDividerModule,
-    MatToolbarModule
-
+    MatToolbarModule, 
+    MDBBootstrapModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,18 +1,4 @@
 <form>
-  <mat-card>
-    <div class="form-inline">
-      <div class="form-group my-sm-2">
-        <label>Search: </label>
-      </div>
-      <div class="form-group mx-sm-3 my-sm-2">
-        <button mat-stroked-button type="submit" (click)="getProductCardByFilter()">Save</button>
-      </div>
-      <div class="form-group mx-sm-3 my-sm-2">
-        <button mat-stroked-button color="warn" type="reset">Clear</button>
-      </div>
-    </div>
-  </mat-card>
-  <mat-divider></mat-divider>
   <mat-accordion>
     <mat-expansion-panel expanded (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
@@ -22,12 +8,9 @@
       </mat-expansion-panel-header>
       <div *ngFor="let parameter of parameters">
         <div class="form-row">
-          <mat-toolbar class="form-row">
-              {{parameter.name | titlecase}}<span
+          <div class="form-row parameter-title">{{parameter.name | titlecase}}<span
               *ngIf="parameter.name!='year'">({{parameter.unit}})</span>
-          </mat-toolbar>
-          <!-- <div class="form-row">{{parameter.name | titlecase}}<span
-              *ngIf="parameter.name!='year'">({{parameter.unit}})</span></div> -->
+          </div>
           <div class="form-row">
             <div class="col-sm-3">
               <input class="form-control endpoint" type="text" step="1" [(ngModel)]="parameter.min"
@@ -46,6 +29,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="submit-box">
+      <button mat-raised-button type="submit" (click)="getProductCardByFilter()" id="submit-button">Save</button>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

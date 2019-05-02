@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../../_services/products.service';
+import { ActivatedRoute } from '@angular/router'
 
 
 @Component({
@@ -10,11 +11,17 @@ import { ProductsService } from '../../_services/products.service';
 })
 export class ProductFormComponent implements OnInit {
   parameters = [];
-  subcategory = "HAVC_Fans";
-  constructor(private productsService: ProductsService) { }
+  subcategory: string;
+  private sub: any;
+
+  constructor(private productsService: ProductsService, private activedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productsService.processData(this.productsService.getParameterList, this.subcategory).subscribe(() => this.parameters = this.productsService.parameterList)
+    this.sub = this.activedRoute.params.subscribe(params => {
+      this.subcategory = params["subcategory"];
+      this.productsService.processData(this.productsService.getParameterList, this.subcategory).subscribe(() => this.parameters = this.productsService.parameterList)
+    }
+    )
   }
 
   getProductCardByFilter() {

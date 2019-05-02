@@ -1,181 +1,195 @@
-<div class="container">
-  <div class="row">
-    <app-search-bar></app-search-bar>
-  </div>
-  <div class="row">
+<app-search-bar></app-search-bar>
+<div class="detail-page-header">
+  <div class="container">
     <app-nav-bar></app-nav-bar>
-  </div>
-  <div class="row">
-    <div class="detail-product-img col-2 col-sm-2">
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+    <div class="row detail-product">
+      {{productDetail.manufacturer}} / {{productDetail.series}} / {{productDetail.model}}
     </div>
-    <div class="detail-product-title col-10 col-sm-10">{{productDetail.manufacturer}} / {{productDetail.series}} / {{productDetail.model}}</div>
   </div>
-  <div class="row">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <ul class="navbar-nav">
+</div>
+<div class="detail-page-nav">
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo ">
+    <links>
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/productslist/{{productId}}#detail-summary">Product Summary <span
-              class="sr-only">(current)</span></a>
+          <a class="nav-link waves-light" mdbWavesEffect href="/productslist/{{productId}}#detail-summary">
+            Product Summary
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href='/productslist/{{productId}}#detail-details' target="_self">Product Details</a>
+          <a class="nav-link waves-light" mdbWavesEffect href='/productslist/{{productId}}#detail-details'>
+            Product Details</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/productslist/{{productId}}#detail-contact">Product Contact</a>
+          <a class="nav-link waves-light" mdbWavesEffect href="/productslist/{{productId}}#detail-contact">
+            Product Contact</a>
         </li>
       </ul>
-    </nav>
-  </div>
-  <div class="row" id="detail-summary">
-    <h1>Product Summary</h1>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="row">
-        <table class="table table-sm table-bordered">
-          <thead>
+    </links>
+  </mdb-navbar>
+</div>
+
+
+<div class="container">
+
+  <mat-card id="detail-summary">
+    <div class="row">
+      <h1>Product Summary</h1>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <table class="table table-sm table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th colspan="2" class="table-name">DESCRIPTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Manufacturer</th>
+                <td>{{productDetail.manufacturer}}</td>
+              </tr>
+              <tr>
+                <th>Series</th>
+                <td>{{productDetail.series}}</td>
+              </tr>
+              <tr>
+                <th>Model</th>
+                <td>{{productDetail.model}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <table class="table table-sm table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th colspan="2" class="table-name">TYPE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Use Type</th>
+                <td>{{productDetail.useType}}</td>
+              </tr>
+              <tr>
+                <th>Application</th>
+                <td>{{productDetail.application}}</td>
+              </tr>
+              <tr>
+                <th>Mounting Location</th>
+                <td>{{productDetail.mountingLocation}}</td>
+              </tr>
+              <tr>
+                <th>Year</th>
+                <td>{{productDetail.year}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-6">
+        <table class="table table-sm table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th colspan="2" class="table-name">TECHNICAL SPECIFICATIONS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let parameter of productDetail.parameters">
+              <th *ngIf="parameter.name!='year'">{{parameter.name}}({{parameter.unit}})</th>
+              <td *ngIf="parameter.name!='year'">{{parameter.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card>
+
+  <mat-card id="detail-details">
+    <div class="row">
+      <h1>Product Details</h1>
+    </div>
+    <div class="row">
+      <table class="table table-sm table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th class="table-name">SERIES INFORMATION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{productDetail.seriesInformation}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card>
+
+  <mat-card id="detail-contact">
+    <div class="row">
+      <h1 id="nauty-h1">Product Contact</h1>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <table class="table table-sm table-hover">
+          <thead class="thead-light">
             <tr>
               <th colspan="2" class="table-name">DESCRIPTION</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th>Manufacturer</th>
-              <td>{{productDetail.manufacturer}}</td>
+              <th>Name</th>
+              <td>{{productDetail.name}}</td>
             </tr>
             <tr>
-              <th>Series</th>
-              <td>{{productDetail.series}}</td>
+              <th>Phone</th>
+              <td>{{productDetail.phone}}</td>
             </tr>
             <tr>
-              <th>Model</th>
-              <td>{{productDetail.model}}</td>
+              <th>Email</th>
+              <td>{{productDetail.email}}</td>
+            </tr>
+            <tr>
+              <th>Web</th>
+              <td>{{productDetail.web}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="row">
-        <table class="table table-sm table-bordered">
-          <thead>
+      <div class="col-6">
+        <table class="table table-sm table-hover">
+          <thead class="thead-light">
             <tr>
-              <th colspan="2" class="table-name">TYPE</th>
+              <th colspan="2" class="table-name">DESCRIPTION</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th>Use Type</th>
-              <td>{{productDetail.useType}}</td>
+              <th>Department</th>
+              <td>{{productDetail.department}}</td>
             </tr>
             <tr>
-              <th>Application</th>
-              <td>{{productDetail.application}}</td>
+              <th>Phone</th>
+              <td>{{productDetail.manufacturerPhone}}</td>
             </tr>
             <tr>
-              <th>Mounting Location</th>
-              <td>{{productDetail.mountingLocation}}</td>
+              <th>Email</th>
+              <td>{{productDetail.manufacturerEmail}}</td>
             </tr>
             <tr>
-              <th>Year</th>
-              <td>{{productDetail.year}}</td>
+              <th>Web</th>
+              <td>{{productDetail.manufacturerWeb}}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <div class="col-6">
-      <table class="table table-sm table-bordered">
-        <thead>
-          <tr>
-            <th colspan="2" class="table-name">TECHNICAL SPECIFICATIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let parameter of productDetail.parameters">
-            <th *ngIf="parameter.name!='year'">{{parameter.name}}({{parameter.unit}})</th>
-            <td *ngIf="parameter.name!='year'">{{parameter.value}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-
-  <div class="row" id="detail-details">
-    <h1>Product Details</h1>
-  </div>
-  <div class="row">
-    <table class="table table-sm table-bordered">
-      <thead>
-        <tr>
-          <th class="table-name">SERIES INFORMATION</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{productDetail.seriesInformation}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="row" id="detail-contact">
-    <h1>Product Contact</h1>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <table class="table table-sm table-bordered">
-        <thead>
-          <tr>
-            <th colspan="2" class="table-name">DESCRIPTION</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <td>{{productDetail.name}}</td>
-          </tr>
-          <tr>
-            <th>Phone</th>
-            <td>{{productDetail.phone}}</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>{{productDetail.email}}</td>
-          </tr>
-          <tr>
-            <th>Web</th>
-            <td>{{productDetail.web}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-6">
-      <table class="table table-sm table-bordered">
-        <thead>
-          <tr>
-            <th colspan="2" class="table-name">DESCRIPTION</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Department</th>
-            <td>{{productDetail.department}}</td>
-          </tr>
-          <tr>
-            <th>Phone</th>
-            <td>{{productDetail.manufacturerPhone}}</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>{{productDetail.manufacturerEmail}}</td>
-          </tr>
-          <tr>
-            <th>Web</th>
-            <td>{{productDetail.manufacturerWeb}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  </mat-card>
 </div>
