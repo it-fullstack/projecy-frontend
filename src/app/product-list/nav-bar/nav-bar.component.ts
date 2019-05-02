@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  subcategory = "HAVC_Fans";
   category = "Mechenical";
-  constructor() { }
+  subcategory: string;
+  private sub: any;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
   ngOnInit() {
+    this.sub = this.activatedRoute.params.subscribe(params => {
+      this.subcategory = params["subcategory"];
+    })
   }
 
 }

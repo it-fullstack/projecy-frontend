@@ -33,9 +33,12 @@
           </mat-card-subtitle>
         </mat-card-content>
         <mat-card-content>
-          <mat-checkbox>Compare</mat-checkbox>
+          <mat-checkbox [(ngModel)]="card.checked">Compare</mat-checkbox>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
+<div class="col compare-button">
+  <button mat-fab (click)="handleCompare()">Compare</button>
+</div>
