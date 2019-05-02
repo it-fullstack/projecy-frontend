@@ -18,8 +18,6 @@ export class ProductsService {
   choosenSub: string;
 
 
-  subcategory = "HAVC_Fans";
-
   products: Product[] = [];
   attribute: [];
   parameterXML: XMLDocument;
@@ -98,7 +96,7 @@ export class ProductsService {
         imgUrl: summary.find("imgUrl").text(),
         year: parseInt(summary.find("year").text()),
         parameters: cardParameter,
-        productId: this.products[i].productId, 
+        productId: this.products[i].productId,
         checked: false
       })
     }
@@ -133,7 +131,7 @@ export class ProductsService {
         imgUrl: summary.find("imgUrl").text(),
         year: parseInt(summary.find("year").text()),
         parameters: cardParameter,
-        productId: this.products[i].productId, 
+        productId: this.products[i].productId,
         checked: false
       })
     }
