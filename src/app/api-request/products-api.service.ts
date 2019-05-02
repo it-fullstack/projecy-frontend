@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from "../model/product";
-import { ProductBySubcategory } from "../model/productBySubcategory";
+import { Product } from '../model/product';
+import { ProductBySubcategory } from '../model/productBySubcategory';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class ProductsApiService {
   getProductByFilter(rawBody): Observable<Product[]> {
     return this.http.post<Product[]>(this.urlProductByFilter, rawBody);
   }
-  
+
   getProductById(productId): Observable<Product[]> {
     return this.http.get<Product[]>(this.urlProductById + productId);
   }

@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductsService } from '../../_services/products.service';
+
 import { ActivatedRoute } from '@angular/router'
+
+import { AlertService } from 'src/app/_services/alert.service';
+
 
 
 @Component({
@@ -11,6 +15,7 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class ProductFormComponent implements OnInit {
   parameters = [];
+
   subcategory: string;
   private sub: any;
 
@@ -22,20 +27,27 @@ export class ProductFormComponent implements OnInit {
       this.productsService.processData(this.productsService.getParameterList, this.subcategory).subscribe(() => this.parameters = this.productsService.parameterList)
     }
     )
+
   }
 
   getProductCardByFilter() {
     let parameterList = this.parameters;
     this.productsService.filterData(
       this.productsService.getProductCardByFilter,
-      this.convertParameterListToFilterCondition(parameterList)).subscribe();
+      this.convertParameterListToFilterCondition(parameterList)).subscribe(
+        () => {},
+        (error) => {
+          this.alertService.error(error);
+          // clean product list
+        }
+      );
   }
 
   convertParameterListToFilterCondition(parameterList) {
     let filterList = {};
     filterList["sub"] = [this.productsService.subcategory];
     for (let ele of parameterList) {
-      filterList[ele.name] = [ele.min, ele.max]
+      filterList[ele.name] = [ele.min, ele.max];
     }
     return filterList;
   }

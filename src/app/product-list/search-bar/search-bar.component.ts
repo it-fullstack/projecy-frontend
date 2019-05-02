@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
 
   subcategory_display: string;
   productName = new FormControl();
-  allProductList: ProductList[] =[];
+  allProductList: ProductList[] = [];
   productList = [];
   subcategoryList = [];
   filteredOptions: Observable<ProductList[]>;
@@ -61,14 +61,14 @@ export class SearchBarComponent implements OnInit {
 
   handleSubmit() {
     this.productId = this.getProductIdByProductName(this.productList, this.productName.value);
-    this.router.navigate(['productslist/', this.productId])
+    this.router.navigate(['productslist/', this.productId]);
   }
 
-  extractProductByCategory(allProductList, subcategory){
+  extractProductByCategory(allProductList, subcategory) {
     let productList = [];
     allProductList.forEach(element => {
       if (element.subcategoryName == subcategory) productList.push(element.productList)
-    })
+    });
     return productList;
   }
   extractSubcategory(productList) {
@@ -78,11 +78,11 @@ export class SearchBarComponent implements OnInit {
     });
     return subcategoryList;
   }
-  getProductIdByProductName(productList, productName): number{
+  getProductIdByProductName(productList, productName): number {
     let productId;
     productList.forEach(element => {
       if (element.productName == productName)
-        productId =  element.productId;
+        productId = element.productId;
     });
     return productId;
   }
