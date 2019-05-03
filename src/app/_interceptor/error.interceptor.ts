@@ -15,7 +15,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     console.log(`in error interceptor`);
 
     return next.handle(request).pipe(catchError(err => {
-      console.log(err.status);
       if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.userService.logout();
@@ -24,7 +23,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 
       const error = err.error.message || err.statusText;
-      console.log(error);
       return throwError(error);
     }));
   }
