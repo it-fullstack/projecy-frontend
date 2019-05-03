@@ -18,13 +18,23 @@ export class JwtInterceptor implements HttpInterceptor {
     const currentUser = this.userService.currentUserValue;
     console.log(`in intercept`);
     if (currentUser && currentUser.token) {
+
+      // test token expired
+      const tokenExpired = this.userService.isTokenExpired(currentUser.token);
+      if (tokenExpired) {
+        this.userService.logout();
+        location.reload();
+        alert(`Please login again`);
+      }
+
+
+      // add token to request header
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${currentUser.token}`
         }
       });
     }
-    console.log(req.headers);
 
     return next.handle(req);
   }
